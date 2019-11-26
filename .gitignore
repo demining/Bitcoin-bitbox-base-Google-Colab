@@ -40,3 +40,7 @@ tools/bbbconfgen/test/test-output.conf
 !/bin/img-mender/README.md
 /bin/img-armbian/*
 !/bin/img-armbian/README.md
+
+
+# Ignore the jekyll cache
+docs/.jekyll-cache/*
