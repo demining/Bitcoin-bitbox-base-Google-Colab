@@ -48,6 +48,8 @@ import (
 	"log"
 	"time"
 
+	"github.com/digitalbitbox/bitbox02-api-go/api/firmware/messages"
+
 	"github.com/digitalbitbox/bitbox-base/middleware/src/redis"
 	"github.com/digitalbitbox/bitbox-base/tools/bbbsupervisor/prometheus"
 	"github.com/digitalbitbox/bitbox-base/tools/bbbsupervisor/watcher"
@@ -106,12 +108,29 @@ func New(redisPort string, prometheusPort string) *Supervisor {
 	return &s
 }
 
+// Start starts the supervisor by starting the watchers.
 func (s *Supervisor) Start() {
 	log.Println("starting bbbsupervisor")
 	s.setupWatchers()
 	s.startWatchers()
+
+	// The Supervisor resets the system states SHUTDOWN and REBOOT upon when
+	// started and notifies the Middleware.
+	err := s.deactivateBaseSubsystemState(messages.BitBoxBaseHeartbeatRequest_SHUTDOWN)
+	if err != nil {
+		log.Printf("Warning: %s\n", err)
+	}
+	err = s.deactivateBaseSubsystemState(messages.BitBoxBaseHeartbeatRequest_REBOOT)
+	if err != nil {
+		log.Printf("Warning: %s\n", err)
+	}
+	err = s.notifyMiddlewareSubsystemStateChanged()
+	if err != nil {
+		log.Printf("Warning: %s", err)
+	}
 }
 
+// Loop enters the event loop which processes events passed by the watchers.
 func (s *Supervisor) Loop() {
 	log.Println("starting supervisor event loop")
 	s.eventLoop()
