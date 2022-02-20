@@ -4,6 +4,15 @@
 
 ## Personal Bitcoin & Lightning node
 
+
+-------------------------
+### Run Google Colab
+
+https://colab.research.google.com/drive/1OShIMVcFZ_khsUIBOIV1lzrqAGo1gfm_?usp=sharing
+
+-------------------------
+
+
 The BitBoxBase is an ongoing project of [Shift Cryptosecurity](https://shiftcrypto.ch/) that aims to build a personal Bitcoin full node appliance.
 The whole software stack is free open-source.
 This documentation is aimed at project members, contributors and intersted people that want to build or customize their own node.
