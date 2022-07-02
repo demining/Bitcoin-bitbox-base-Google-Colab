@@ -60,3 +60,10 @@ The overarching goal, however, is to enable everyone to run a Bitcoin full node.
 We are building the software stack of the BitBoxBase fully open source and with its application outside of our own hardware device in mind.
 Contributions are very welcome.
 Please read [CONTRIBUTING](CONTRIBUTING.md) before submitting changes to the repository.
+
+----
+
+|  | Donation Address |
+| --- | --- |
+| ♥ __BTC__ | 1Lw2kh9WzCActXSGHxyypGLkqQZfxDpw8v |
+| ♥ __ETH__ | 0xaBd66CF90898517573f19184b3297d651f7b90bf |
